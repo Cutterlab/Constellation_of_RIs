@@ -1,5 +1,5 @@
 # Constellation_of_RIs
-Data and scripts for "A constellation of dysfunctional hybrid phenotypes enforces reproductive isolation between Caenorhabditis nematode species".
+Data and scripts containing statistical analyses from "A constellation of dysfunctional hybrid phenotypes enforces reproductive isolation between Caenorhabditis nematode species".
 ## Description of the data and file structure
 
 Data from the assortative mating assay, ectopic sperm migration assay, spermatid morphology measurments (spermatid area, spermatid roundness, spermatid circularity and spermatid number) and hybrid male tail defect experiment. Statistical analysis of each dataset in R (R Scripts). 
