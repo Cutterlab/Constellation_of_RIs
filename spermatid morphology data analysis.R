@@ -103,6 +103,101 @@ glm_spermnum_pairwise <- emmeans(glm_spermnum_nb, "parental_cross")
 pairs(glm_spermnum_pairwise)
 
 
+#=================================================================================================================
+#Spermatid abnormalities
+#=================================================================================================================
+
+spermatid_abnormality_data <- read_excel("C:/spermatid_morphology_data.xlsx", 
+                                        +     sheet = "Spermatid abnormalities")
+
+
+#pairwise fisher test: F1A vs VX0088
+summary_data1 <- spermatid_abnormality_data %>% 
+  filter(parental_cross == "F1A" | parental_cross == "VX0088") %>%
+  group_by(parental_cross) %>%
+  summarise(allNormalSperm = sum(abnormal_sperm == 0), hasAbnormalSperm = sum(abnormal_sperm > 0))
+
+rownames(summary_data1) <- summary_data1$parental_cross
+summary_data1 <- summary_data1[, -1]
+
+fisher.test(summary_data1) #p=0.01523
+
+
+#pairwise fisher test: F1A vs PB219
+summary_data2 <- spermatid_abnormality_data %>% 
+  filter(parental_cross == "F1A" | parental_cross == "PB219") %>%
+  group_by(parental_cross) %>%
+  summarise(allNormalSperm = sum(abnormal_sperm == 0), hasAbnormalSperm = sum(abnormal_sperm > 0))
+
+rownames(summary_data2) <- summary_data2$parental_cross
+summary_data2 <- summary_data2[, -1]
+
+fisher.test(summary_data2) #p=0.0173
+
+
+#pairwise fisher test: F1B vs VX0088
+summary_data3 <- spermatid_abnormality_data %>% 
+  filter(parental_cross == "F1B" | parental_cross == "VX0088") %>%
+  group_by(parental_cross) %>%
+  summarise(allNormalSperm = sum(abnormal_sperm == 0), hasAbnormalSperm = sum(abnormal_sperm > 0))
+
+rownames(summary_data3) <- summary_data3$parental_cross
+summary_data3 <- summary_data3[, -1]
+
+fisher.test(summary_data3) #p=0.5718
+
+
+#pairwise fisher test: F1B vs PB219
+summary_data4 <- spermatid_abnormality_data %>% 
+  filter(parental_cross == "F1B" | parental_cross == "PB219") %>%
+  group_by(parental_cross) %>%
+  summarise(allNormalSperm = sum(abnormal_sperm == 0), hasAbnormalSperm = sum(abnormal_sperm > 0))
+
+rownames(summary_data4) <- summary_data4$parental_cross
+summary_data4 <- summary_data4[, -1]
+
+fisher.test(summary_data4) #p=0.5832
+
+#pairwise fisher test: F1A vs F1B
+summary_data5 <- spermatid_abnormality_data %>% 
+  filter(parental_cross == "F1A" | parental_cross == "F1B") %>%
+  group_by(parental_cross) %>%
+  summarise(allNormalSperm = sum(abnormal_sperm == 0), hasAbnormalSperm = sum(abnormal_sperm > 0))
+
+rownames(summary_data5) <- summary_data5$parental_cross
+summary_data5 <- summary_data5[, -1]
+
+fisher.test(summary_data5) #p=0.13
+
+#pairwise fisher test: VX0088 vs PB219
+summary_data6 <- spermatid_abnormality_data %>% 
+  filter(parental_cross == "VX0088" | parental_cross == "PB219") %>%
+  group_by(parental_cross) %>%
+  summarise(allNormalSperm = sum(abnormal_sperm == 0), hasAbnormalSperm = sum(abnormal_sperm > 0))
+
+rownames(summary_data6) <- summary_data6$parental_cross
+summary_data6 <- summary_data6[, -1]
+
+fisher.test(summary_data6) #p=~1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
